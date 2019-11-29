@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -lt 1 ] ; then
+  cat << EOM
+  [usage]
+    $0: $0 [KEYWORD-FOR-SERACH-PROJECTS]
+
+    "gcloud projects list --filter" wrapper, "Project-ID" only
+EOM
+  exit 0
+fi
+
+gcloud projects list --format='value(projectId)' --filter="projectId:${@}*"
+
+exit 0

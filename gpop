@@ -1,0 +1,23 @@
+#!/bin/bash
+
+BASEURL='https://console.cloud.google.com/home/dashboard?project='
+
+if [ $# -lt 1 ] ; then
+  cat << EOM
+  [usage]
+    $0: $0 [Project-ID_For_Open_With_Web-Browser]
+
+EOM
+  exit 0
+fi
+URL="${BASEURL}${1}"
+
+if [ -z "$(command -v open)" ] ; then
+  echo "command 'open' not available. quit."
+  exit 0
+fi
+
+open "$URL"
+
+exit 0
+
