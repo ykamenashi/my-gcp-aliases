@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -lt 1 ] ; then
+  cat << EOM
+  [usage]
+  $0: $0 [list / create / ssh / ...]
+
+    Google Cloud SDK: GCE command-line interface wrapper
+
+EOM
+  exit 0
+fi
+
+gcloud compute instances ${@}
+
